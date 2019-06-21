@@ -33,7 +33,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60rem;
-  min-height: 30rem;
   background-color: var(--color-white);
   border-radius: .5px;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, .4);
@@ -41,16 +40,19 @@ body {
 
 .quotes {
   padding: 2rem 5rem;
+  backface-visibility: hidden;
 }
 
 .quote-text {
-  padding-bottom: .2rem;
+  padding-bottom: .8rem;
   font-size: 2.5rem;
 }
 
+.quote-author {
+  font-size: 1.3rem;
+}
+
 .controls {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -63,18 +65,25 @@ body {
   border-radius: .4rem;
   border: none;
   padding: 1rem 2rem;
+  outline: none;
   cursor: pointer;
+  transition: all .2s;
+}
+
+.button:active {
+  -webkit-transform: translateY(-.5rem);
+  transform: translateY(-.5rem);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  transform: translateY(-.5rem);
 }
 
 .tweet,
 .new-quote {
   box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .2);
-  transition: all .2s;
-}
-
-.tweet:hover,
-.new-quote:hover {
-  transform: translateY(-.5rem);
 }
 
 .tweet {
