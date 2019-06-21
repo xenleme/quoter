@@ -23,7 +23,10 @@ function displayQuote(quote) {
   quoteAuthor.textContent = `- ${author}`;
 
   const tweetButton = document.querySelector('.tweet');
-  tweetButton.setAttribute('href', `https://twitter.com/share?text=${quote}`);
+  tweetButton.setAttribute(
+    'href',
+    `https://twitter.com/share?text=${content} - ${author}`
+  );
 }
 
 const newQuoteButton = document.querySelector('.new-quote');
