@@ -27,6 +27,9 @@ function displayQuote(quote) {
     'href',
     `https://twitter.com/share?text=${content} - ${author}`
   );
+
+  // Hide loader when quote is loaded
+  loader.className += ' hidden';
 }
 
 const newQuoteButton = document.querySelector('.new-quote');
