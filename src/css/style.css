@@ -1,9 +1,13 @@
 :root {
   --color-white: #fff;
+  --color-grey-dark-1: #1c1c1c;
+  --color-grey-dark-2: #3a3a3a;
+  --color-grey-dark-3: #515151;
   --color-light-grey: #f3f3f3;
-  --color-light-purple: #d6d6f9;
   --color-watermelon: #ff5f6d;
   --color-yellow: #ffc371;
+  --color-light-navy: #3a6186;
+  --color-cherry: #89253e;
   --color-twitter: #1da1f2;
 
   --main-font-family: 'Roboto', sans-serif;
@@ -25,7 +29,7 @@ html {
 body {
   font-family: var(--main-font-family);
   height: 100vh;
-  background: linear-gradient(var(--color-white), var(--color-light-purple));
+  transition: all .5s;
 }
 
 .app {
@@ -34,7 +38,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60rem;
-  background-color: var(--color-white);
   border-radius: 0.5rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.4);
 }
@@ -43,6 +46,7 @@ body {
   width: 100%;
   padding: 2rem 5rem;
   backface-visibility: hidden;
+  transition: all .5s;
 }
 
 .quote-text {
@@ -88,22 +92,22 @@ body {
 }
 
 .new-quote {
-  background: linear-gradient(
-    to right bottom,
-    var(--color-watermelon),
-    var(--color-yellow)
-  );
+  background: linear-gradient(to right bottom,
+      var(--color-watermelon),
+      var(--color-yellow));
   font-weight: bold;
   text-transform: uppercase;
 }
 
+/* LOADER */
 .loader {
-  background-color: white;
+  background-color: var(--color-white);
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
+  border-radius: 0.5rem;
   z-index: 99;
 
   display: flex;
@@ -126,6 +130,90 @@ body {
   animation: spin 2s linear infinite;
 }
 
+/* DARK MODE */
+.dark-theme {
+  background-color: var(--color-grey-dark-1);
+}
+
+.dark-theme .app {
+  background-color: var(--color-grey-dark-2);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.8);
+}
+
+.dark-theme .quotes {
+  color: var(--color-white);
+}
+
+.dark-theme .new-quote {
+  background: linear-gradient(to right bottom, var(--color-light-navy), var(--color-cherry));
+}
+
+.dark-theme .loader {
+  background-color: var(--color-grey-dark-2);
+}
+
+.dark-theme .spinner {
+  border: 1.6rem solid var(--color-grey-dark-3);
+  border-top: 1.6rem solid var(--color-twitter);
+}
+
+.toggle-container {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  background: var(--color-grey-dark-1);
+  position: relative;
+  width: 5.2rem;
+  height: 2.7rem;
+  text-indent: -9999px;
+  float: right;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: .3rem;
+  left: .3rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-white);
+  border-radius: 9rem;
+  transition: 0.3s;
+}
+
+input:checked+label {
+  background: var(--color-twitter);
+}
+
+input:checked+label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 4.5rem;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+
+/* ANIMATIONS AND MEDIAQUERIES */
 @keyframes fadeOut {
   100% {
     opacity: 0;
@@ -143,12 +231,30 @@ body {
   }
 }
 
-@media screen and (max-width: 37.5em) {
+@media screen and (max-width: 34.6875em) {
   .app {
     width: 100%;
   }
 
   .quote-text {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  .quote-author {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 31.25em) {
+  .app {
+    width: 80%;
+  }
+
+  .quotes {
+    padding: 2rem;
+  }
+
+  .controls {
+    padding: 0 1.2rem .8rem;
   }
 }
