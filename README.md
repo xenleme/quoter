@@ -2,7 +2,9 @@
 
 This is a minimal random quotes generator built with using Javascript and [Quotable API](https://github.com/lukePeavey/quotable)  
 
-You can clone this project and run:  
+#### You can check the project [live](https://xenleme.github.io/quoter/)
+
+Or clone this project and run:  
 
     npm install
     npm run devserver
