@@ -76,10 +76,6 @@ body {
   transition: all 0.2s;
 }
 
-.button:hover {
-  transform: translateY(-0.5rem);
-}
-
 .tweet,
 .new-quote {
   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
@@ -256,5 +252,12 @@ html.transition *:after {
 
   .controls {
     padding: 0 1.2rem .8rem;
+  }
+}
+
+/* Support hover button only on non-touch devices  */
+@media not all and (pointer: coarse) {
+  .button:hover {
+    transform: translateY(-0.5rem);
   }
 }
